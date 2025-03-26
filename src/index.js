@@ -9,7 +9,7 @@ var getValidationMessage = require('./validationMessages');
  * @private
  * @param {number} num - Number to validate
  */
-function _validateLength(num) {
+const  _validateLength = (num) => {
   const len = Number(num);
   if (isNaN(len) || !Number.isInteger(len) || len < 1) {
     throw new Error(error.length);
@@ -24,7 +24,7 @@ function _validateLength(num) {
  * @returns {boolean} Boolean value indicting the validity
  *           of the password against the property
  */
-function _isPasswordValidFor(property) {
+const _isPasswordValidFor(property) =>{
   return lib[property.method].apply(this, property.arguments);
 }
 
@@ -36,7 +36,7 @@ function _isPasswordValidFor(property) {
  * @param {array} arguments - arguments for the func property
  * @returns {PasswordValidator}
  */
-function _register(method, args, description) {
+const _register = (method, args, description)=> {
   // Add property to the schema
   this.properties.push({ method, arguments: args, description });
   return this;
@@ -251,14 +251,14 @@ class PasswordValidator {
   }
 
   /**
-   * Insert a plugin function into the validation chain
+   * Insert a plugin const into the validation chain
    *
-   * @param {Plugin} fn  - A plugin function
+   * @param {Plugin} fn  - A plugin const
    * @param {string} [description] - description of the validation
    * @returns {PasswordValidator} instance of PasswordValidator schema
    */
   usingPlugin(fn, description) {
-    if (typeof fn !== 'function') {
+    if (typeof fn !== 'const') {
       throw new Error(error.invalidPlugin);
     }
     return _register.call(this, 'usingPlugin', arguments);
