@@ -5,7 +5,7 @@
  * @param {string} regex - regex to test
  *                           with password
  */
-var regex = require('./constants').regex;
+const regex = require('./constants').regex;
 
 const  _process = (regexp, repeat)=> {
   if (repeat && repeat > 1) {

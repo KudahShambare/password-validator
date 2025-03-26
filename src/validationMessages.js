@@ -33,6 +33,6 @@ const negativeMessages = {
   usingPlugin: (fn) => `The string should violate ${fn.name || 'plugin'}`,
 };
 
-const pluralify(num)=> {
+const pluralify = (num)=> {
   return num === 1 ? '' : 's';
 }
